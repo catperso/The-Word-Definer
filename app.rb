@@ -46,7 +46,7 @@ end
 
 post('/word/:id/definitions') do
   @word = Word.find(params[:id].to_i)
-  definition = Definition.new(definition: params[:new_definition], word_id: @word.id)
+  definition = Definition.new({definition: params[:new_definition], word_id: @word.id})
   definition.save
   erb(:word)
 end
@@ -55,6 +55,13 @@ get('/word/:word_id/definition/:id') do
   @word = Word.find(params[:word_id].to_i)
   @definition = Definition.find(params[:id].to_i)
   erb(:definition)
+end
+
+patch('/word/:word_id/definition/:id') do
+  @word = Word.find(params[:word_id].to_i)
+  definition = Definition.find(params[:id].to_i)
+  definition.update({definition: params[:def_update]})
+  erb(:word)
 end
 
 delete('/word/:word_id/definition/:id') do

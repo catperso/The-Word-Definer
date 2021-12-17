@@ -1,6 +1,13 @@
 <h1><strong><%= @word.word %></strong> means...</h1>
 <br>
 <h3><em><%= @definition.definition %></em></h3>
+<br>
+<form action="/word/<%= @word.id %>/definition/<%= @definition.id %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <input id="def_update" name="def_update" type="text" class="form-control" placeholder="Instead of: '<%= @definition.definition %>'..." required>
+  <br>
+  <button type="submit" class="btn btn-primary">Update definition</button>
+</form>
 <hr>
 <form action="/word/<%= @word.id %>" method="get">
   <button type="submit" class="btn btn-light">Return to <%= @word.word %></button>
