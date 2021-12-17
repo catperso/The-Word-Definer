@@ -10,6 +10,19 @@ class Definition
     @id = attributes[:id] || @@total_rows += 1
   end
 
+  def self.all
+    @@definitions.values
+  end
+
+  def self.clear
+    @@definitions = {}
+    @@total_rows = 0  
+  end
+
+  def save
+    @@definitions[self.id] = Definition.new({definition: self.definition, id: self.id, word_id: self.word_id})
+  end
+
   def ==(def_to_compare)
     (self.definition == def_to_compare.definition) && (self.word_id == def_to_compare.word_id)
   end
