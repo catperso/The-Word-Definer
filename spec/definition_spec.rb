@@ -77,4 +77,16 @@ describe '#Definition' do
     end
   end
 
+  describe('.find_by_word') do
+    it("finds definitions for a word from the word's id") do
+      word2 = Word.new({word: "hammocks"})
+      word2.save
+      def1 = Definition.new({definition: 'freudian yellow fruit', word_id: @word.id})
+      def1.save
+      def2 = Definition.new({definition: 'island lounge furniture', word_id: word2.id})
+      def2.save
+      expect(Definition.find_by_word(word2.id)).to(eq([def2]))
+    end
+  end
+
 end

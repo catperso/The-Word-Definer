@@ -23,6 +23,16 @@ class Definition
     @@definitions[id]
   end
 
+  def self.find_by_word(word_id)
+    defs = []
+    @@definitions.values.each do |definition|
+      if definition.word_id == word_id
+        defs.push(definition)
+      end
+    end
+    defs
+  end
+
   def save
     @@definitions[self.id] = Definition.new({definition: self.definition, id: self.id, word_id: self.word_id})
   end
