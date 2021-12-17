@@ -47,5 +47,15 @@ describe '#Definition' do
     end
   end
 
+  describe('.find') do
+    it("finds a definition by id") do
+      def1 = Definition.new({definition: 'freudian yellow fruit', word_id: @word.id})
+      def1.save
+      def2 = Definition.new({definition: 'delicious monkey treat', word_id: @word.id})
+      def2.save
+      expect(Definition.find(def1.id)).to(eq(def1))
+    end
+  end
+
 
 end
