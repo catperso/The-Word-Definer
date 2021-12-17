@@ -89,4 +89,12 @@ describe '#Definition' do
     end
   end
 
+  describe('#word') do
+    it("finds the word a definition belongs to") do
+      def1 = Definition.new({definition: 'freudian yellow fruit', word_id: @word.id})
+      def1.save
+      expect(def1.word).to(eq(@word))
+    end
+  end
+
 end
