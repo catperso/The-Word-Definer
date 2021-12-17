@@ -3,7 +3,9 @@ require 'word'
 require 'definition'
 
 describe '#Word' do
-
+  before(:each) do
+    Word.clear
+  end
 
   describe('.all') do
     it("returns an empty array when there are no words") do
@@ -26,6 +28,17 @@ describe '#Word' do
       word1 = Word.new({word: "bananas"})
       word2 = Word.new({word: "bananas"})
       expect(word1).to(eq(word2))
+    end
+  end
+
+  describe('.clear') do
+    it("clears all saved words") do
+      word1 = Word.new({word: "bananas"})
+      word1.save
+      word2 = Word.new({word: "hammocks"})
+      word2.save
+      Word.clear
+      expect(Word.all).to(eq([]))
     end
   end
 

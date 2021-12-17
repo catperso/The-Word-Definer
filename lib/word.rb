@@ -13,6 +13,11 @@ class Word
     @@words.values
   end
 
+  def self.clear
+    @@words = {}
+    @@total_rows = 0  
+  end
+
   def save
     @@words[self.id] = Word.new({word: self.word, id: self.id})
   end
@@ -20,5 +25,7 @@ class Word
   def ==(other_word)
     self.word.eql?(other_word.word)
   end
+
+
 
 end
