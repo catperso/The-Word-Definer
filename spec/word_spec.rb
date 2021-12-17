@@ -5,6 +5,7 @@ require 'definition'
 describe '#Word' do
   before(:each) do
     Word.clear
+    Definition.clear
   end
 
   describe('.all') do
@@ -69,6 +70,18 @@ describe '#Word' do
       word2.save
       word1.delete
       expect(Word.all).to(eq([word2]))
+    end
+  end
+
+  describe('#definitions') do
+    it("returns a word's definitions") do
+      word1 = Word.new({word: "bananas"})
+      word1.save
+      def1 = Definition.new({definition: 'freudian yellow fruit', word_id: word1.id})
+      def1.save
+      def2 = Definition.new({definition: 'delicious monkey treat', word_id: word1.id})
+      def2.save
+      expect(word1.definitions).to(eq([def1, def2]))
     end
   end
 
