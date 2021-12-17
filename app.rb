@@ -14,13 +14,25 @@ get('/words') do
   erb(:words)
 end
 
-get('/words/new') do
+get('/word/new') do
   erb(:new_word)
 end
 
 post('/words') do
-  new_word = params[:new_word]
-  word = Word.new({word: new_word})
+  # new_word = params[:new_word]
+  word = Word.new({word: params[:new_word]})
   word.save
   redirect to('/words')
+end
+
+get('/word/:id') do
+  @word = Word.find(params[:id].to_i)
+  erb(:word)
+end
+
+post('/word/:id/definitions') do
+  @word = Word.find(params[:id].to_i)
+  definition = Definition.new(definition: params[:new_definition], word_id: @word.id)
+  definition.save
+  erb(:word)
 end

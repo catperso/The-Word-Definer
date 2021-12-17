@@ -1,0 +1,18 @@
+<h1><%= @word.word %></h1>
+
+<h3>Definitions:</h3>
+<% if @word.definitions.length > 0 %>
+  <ul>
+    <% @word.definitions.each do |definition| %>
+      <li><a href="/word/<%= @word.id %>/definition/<%= definition.id %>"><%= definition.definition %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>This word is undefined! Can you tell me what <strong><%= @word.word %></strong> means?</p>
+<% end %>
+<hr>
+<form action="/word/<%= @word.id %>/definitions" method="post">
+  <input type="text" class="form-control" name="new_definition" id="new_definition" placeholder="What does <%= @word.word %> mean?" required>
+  <br>
+  <button type="submit" class="btn btn-warning">Add a new definition!</button>
+</form>

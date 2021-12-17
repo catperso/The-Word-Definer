@@ -3,7 +3,7 @@
   <ul>
     <% @words.each do |word| %>
       <% if word.definitions.length > 0 %>
-        <li><a href="/words/<%= word.id %>"><%= word.word %></a></li>
+        <li><a href="/word/<%= word.id %>"><%= word.word %></a></li>
       <% end %>
     <% end %>
   </ul>
@@ -16,7 +16,7 @@
   <ul>
     <% @words.each do |word| %>
       <% if word.definitions.length == 0 %>
-        <li><a href="/words/<%= word.id %>"><%= word.word %></a></li>
+        <li><a href="/word/<%= word.id %>"><%= word.word %></a></li>
       <% end %>
     <% end %>
   </ul>
@@ -24,6 +24,6 @@
   <p>No words have been added!</p>
 <% end %>
 <hr>
-<form action="/words/new" method="get">
+<form action="/word/new" method="get">
   <button type="submit" class="btn btn-info">Add a new word!</button>
 </form>
