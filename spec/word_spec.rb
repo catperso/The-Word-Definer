@@ -11,5 +11,22 @@ describe '#Word' do
     end
   end
 
+  describe('#save') do
+    it("saves a word") do
+      word1 = Word.new({word: "bananas"})
+      word1.save
+      word2 = Word.new({word: "hammocks"})
+      word2.save
+      expect(Word.all).to(eq([word1, word2]))
+    end
+  end
+
+  describe('#==') do
+    it("is the same word if the 'word' attribute is the same as another word") do
+      word1 = Word.new({word: "bananas"})
+      word2 = Word.new({word: "bananas"})
+      expect(word1).to(eq(word2))
+    end
+  end
 
 end
