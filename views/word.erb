@@ -16,3 +16,12 @@
   <br>
   <button type="submit" class="btn btn-warning">Add a new definition!</button>
 </form>
+<br>
+<form action="/words" method="get">
+  <button type="submit" class="btn btn-light">Return to all words</button>
+</form>
+<hr>
+<form action="/word/<%= @word.id %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit" class="btn btn-danger">Remove <%= @word.word %>!</button>
+</form>

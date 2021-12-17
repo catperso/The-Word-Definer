@@ -19,15 +19,29 @@ get('/word/new') do
 end
 
 post('/words') do
-  # new_word = params[:new_word]
   word = Word.new({word: params[:new_word]})
   word.save
+  redirect to('/words')
+end
+
+delete('/words') do
+  Definition.clear
+  Word.clear
   redirect to('/words')
 end
 
 get('/word/:id') do
   @word = Word.find(params[:id].to_i)
   erb(:word)
+end
+
+delete('/word/:id') do
+  word = Word.find(params[:id].to_i)
+  word.definitions.each do |definition|
+    definition.delete
+  end
+  word.delete
+  redirect to('/words')
 end
 
 post('/word/:id/definitions') do
