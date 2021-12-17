@@ -1,0 +1,8 @@
+<h1><strong><%= @word.word %></strong> means...</h1>
+<br>
+<h3><em><%= @definition.definition %></em></h3>
+<hr>
+<form action="/word/<%= @word.id %>/definition/<%= @definition.id %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit" class="btn btn-danger">Remove definition!</button>
+</form>

@@ -36,3 +36,16 @@ post('/word/:id/definitions') do
   definition.save
   erb(:word)
 end
+
+get('/word/:word_id/definition/:id') do
+  @word = Word.find(params[:word_id].to_i)
+  @definition = Definition.find(params[:id].to_i)
+  erb(:definition)
+end
+
+delete('/word/:word_id/definition/:id') do
+  definition = Definition.find(params[:id].to_i)
+  definition.delete
+  @word = Word.find(params[:word_id].to_i)
+  erb(:word)
+end
