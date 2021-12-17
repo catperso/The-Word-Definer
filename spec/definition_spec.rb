@@ -57,5 +57,13 @@ describe '#Definition' do
     end
   end
 
+  describe('#update') do
+    it("updates a definition's attributes") do
+      def1 = Definition.new({definition: 'freudian yellow fruit', word_id: @word.id})
+      def1.save
+      def1.update({definition: 'delicious monkey treat'})
+      expect(def1.definition).to(eq('delicious monkey treat'))
+    end
+  end
 
 end

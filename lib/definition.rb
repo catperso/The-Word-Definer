@@ -31,4 +31,13 @@ class Definition
     (self.definition == def_to_compare.definition) && (self.word_id == def_to_compare.word_id)
   end
 
+  def update(attributes)
+    if attributes[:definition]
+      self.definition = attributes[:definition]
+    end
+    if attributes[:word_id]
+      self.word_id = attributes[:word_id]
+    end
+  end
+
 end
