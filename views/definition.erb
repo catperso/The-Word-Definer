@@ -6,14 +6,14 @@
   <input name="_method" type="hidden" value="patch">
   <input id="def_update" name="def_update" type="text" class="form-control" placeholder="Instead of: '<%= @definition.definition %>'..." required>
   <br>
-  <button type="submit" class="btn btn-primary">Update definition</button>
-</form>
-<hr>
-<form action="/word/<%= @word.id %>" method="get">
-  <button type="submit" class="btn btn-light">Return to <%= @word.word %></button>
+  <button type="submit" class="btn btn-primary">Change definition</button>
 </form>
 <br>
 <form action="/word/<%= @word.id %>/definition/<%= @definition.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
   <button type="submit" class="btn btn-danger">Remove definition!</button>
+</form>
+<hr>
+<form action="/word/<%= @word.id %>" method="get">
+  <button type="submit" class="btn btn-light">Return to <%= @word.word %></button>
 </form>

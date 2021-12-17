@@ -35,6 +35,12 @@ get('/word/:id') do
   erb(:word)
 end
 
+patch('/word/:id') do
+  @word = Word.find(params[:id].to_i)
+  @word.update({word: params[:word_update]})
+  erb(:word)
+end
+
 delete('/word/:id') do
   word = Word.find(params[:id].to_i)
   word.definitions.each do |definition|
