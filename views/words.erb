@@ -1,16 +1,29 @@
-<h1>The Fantastical Word Definerizer!!</h1>
-
 <h3>Defined Words</h3>
 <% if @words.any? %>
   <ul>
     <% @words.each do |word| %>
-      <li><a href="/words/<%=word.id%>"><%=word.name%></a></li>
-    <%end%>
+      <% if word.definitions.length > 0 %>
+        <li><a href="/words/<%= word.id %>"><%= word.word %></a></li>
+      <% end %>
+    <% end %>
   </ul>
-<%else%>
+<% else %>
   <p>There are no words yet defined!</p>
-<%end%>
+<% end %>
+<hr>
+<h3>Undefined Words</h3>
+<% if @words.any? %>
+  <ul>
+    <% @words.each do |word| %>
+      <% if word.definitions.length == 0 %>
+        <li><a href="/words/<%= word.id %>"><%= word.word %></a></li>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Every single word ever!</p>
+<% end %>
 <hr>
 <form action="/words/new" method="get">
-  <button type="submit" class="btn btn-info">Define a new word!</button>
+  <button type="submit" class="btn btn-info">Add a new word!</button>
 </form>
