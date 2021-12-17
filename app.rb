@@ -10,6 +10,7 @@ end
 
 get('/words') do
   @words = Word.all
+  @definitions = Definition.all
   erb(:words)
 end
 

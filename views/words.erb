@@ -1,5 +1,5 @@
 <h3>Defined Words</h3>
-<% if @words.any? %>
+<% if @definitions.any? %>
   <ul>
     <% @words.each do |word| %>
       <% if word.definitions.length > 0 %>
@@ -21,7 +21,7 @@
     <% end %>
   </ul>
 <% else %>
-  <p>Every single word ever!</p>
+  <p>No words have been added!</p>
 <% end %>
 <hr>
 <form action="/words/new" method="get">
