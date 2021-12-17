@@ -52,4 +52,13 @@ describe '#Word' do
     end
   end
 
+  describe('#update') do
+    it("updates any of a word's attributes") do
+      word = Word.new({word: "bananas"})
+      word.save
+      word.update({word: "hammocks"})
+      expect(word.word).to(eq("hammocks"))
+    end
+  end
+
 end

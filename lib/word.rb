@@ -30,6 +30,10 @@ class Word
     self.word.eql?(other_word.word)
   end
 
-
+  def update(attributes)
+    if attributes[:word]
+      @word = attributes[:word]
+    end
+  end
 
 end
