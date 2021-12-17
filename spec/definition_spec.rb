@@ -66,4 +66,15 @@ describe '#Definition' do
     end
   end
 
+  describe('#delete') do
+    it("removes a definition from the pseudo database") do
+      def1 = Definition.new({definition: 'freudian yellow fruit', word_id: @word.id})
+      def1.save
+      def2 = Definition.new({definition: 'delicious monkey treat', word_id: @word.id})
+      def2.save
+      def1.delete
+      expect(Definition.all).to(eq([def2]))
+    end
+  end
+
 end

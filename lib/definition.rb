@@ -40,4 +40,8 @@ class Definition
     end
   end
 
+  def delete
+    @@definitions.delete(self.id)
+  end
+
 end
