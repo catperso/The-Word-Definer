@@ -1,71 +1,44 @@
+# _The Fantastic Word Definerizer!_
+
+#### By _**Matt C.**_
+
+#### _Ruby Code Review #2 on Routing With Sinatra_
+
 ## Description
+_A webapp for kids that lets you upload words and then upload definitions to those words. All words and definitions have total CRUD functionality._
 
-This repository provides the necessary Docker configuration to use Sinatra for Ruby and Rails Week 2 at Epicodus. This includes the following:
+## Technologies Used
 
-* Running a Sinatra local server.
-* Attaching to the local server to use Pry for debugging.
-* Running tests with RSpec and integration tests with Capybara.
+* _Ruby_
+* _rspec_
+* _pry_
+* _[Docker](https://www.docker.com/)(optional)_
+* _Sinatra_
+* _Capybara_
 
-This is a template repository, which means you should create a new repository using `ruby-sinatra-docker-container` as a template. Once you've done so, clone the repository on your desktop and `cd` into the repository via the command line.
+## Using this app with Ruby 2.6.5 installed natively (no Docker)
 
-This project also includes most of the basic scaffolding for a Sinatra project, including `app.rb`, `lib` and `spec` directories, and other necessary configuration such as a `Gemfile` and `config.ru` file. While you can run the included tests and `app.rb`, they are just for demonstration and you'll want to replace these files with your own.
+* _Run_ `git clone https://github.com/catperso/The-Word-Definer` _in your terminal to clone this repository to your device, then navigate to the project directory._
+* _Run_ `bundle` _to package the Gems and set up Gemfile.lock._
+* _Run_ `rspec` _if you want to run the specs for the classes and Capybara integration._
+* _Run_ `ruby app.rb` _to start a local server._
+* _Open up your web browser and go to_ `http://localhost:4567/` _while the server is running to experience the project!_
 
-### Running a Server
+## Using this app with Docker
 
-To run a local server, type the following into the command line (you must be in the root directory of the project):
+* _First make sure Docker is installed as per the official [instructions](https://docs.docker.com/get-docker/)._
+* _Run_ `docker pull ruby:2.6.5` _to pull an image for the same version of Ruby this project was built with._
+* _Run_ `git clone https://github.com/catperso/The-Word-Definer` _in your terminal to clone this repository to your device, then navigate to the project directory._
+* _Run_ `docker-compose run --rm web bundle exec rspec` _if you want to run the specs for the classes and Capybara integration._
+* _Run_ `docker-compose up --build` _to start a local server._
+* _Open up your web browser and go to_ `http://localhost:4567/` _while the server is running to experience the project!_
 
-```
-$ docker-compose up --build
-```
+## Known Bugs
 
-Once the server is running, you can navigate to `http://localhost:4567/` to see the home page of the Sinatra application. You can do this as soon as you clone the project. If everything is working correctly, you'll see `Hello world!` at `http://localhost:4567/`.
+_None so far._
 
-When you're done running the server, you should always type in `docker-compose down` to gracefully stop the container.
+## License - [MIT](https://opensource.org/licenses/MIT)
 
-### Running Tests
+_If you run into any problems/bugs feel free to send me an email [(mc.casperson@gmail.com)](mailto:mc.casperson@gmail.com) with details._
 
-To run tests, run the following command:
-
-```
-$ docker-compose run --rm web bundle exec rspec
-```
-
-There are two specs included in the basic scaffolding - an RSpec test and a Capybara integration test. You can run the command above without making any code changes to see the test output.
-
-Pry will work with this command and there's no need to do any extra work such as attaching to an image. Just add `binding.pry` to your code where needed (and don't forget to `require 'pry'` if it's needed in a file).
-
-You may want to alias the above command. For example:
-
-```bash
-# Add this to your shell configuration.
-
-alias sspec="docker-compose run --rm web bundle exec rspec"
-```
-
-### Using Pry with Sinatra
-
-You can use Pry with Sinatra but you will not automatically have an interactive terminal for typing in Pry commands. You need to complete a few additional steps to use Pry.
-
-First, you need to get the container ID of the Docker process running your Sinatra application. (Note that your Sinatra application must be running when you do this.) You can do that by typing the following in the terminal:
-
-```
-$ docker ps
-```
-
-This will list all Docker processes. You'll likely see something like this (though you may have more processes running):
-
-```
-CONTAINER ID   IMAGE              COMMAND                  CREATED             STATUS          PORTS                    NAMES
-ed9caa7f61ab   sinatra-test_web   "bundle exec rackup …"   14 minutes ago      Up 14 minutes   0.0.0.0:4567->4567/tcp   sinatra-test_web_1
-85d3c125977e   postgres:12.1      "docker-entrypoint.s…"   About an hour ago   Up 14 minutes   5432/tcp                 sinatra-test_db_1
-```
-
-A container's ID will change every time you re-run a Docker image so you'll always need to grab a fresh container ID. In the example above, we'd grab the container ID related to `sinatra-test_web`. Your image name will probably be `[APP_NAME]_web` where `[APP_NAME]` is the name of your application.
-
-Next, in a new terminal tab, copy the container ID and type in the following command (replacing `[CONTAINER_ID]` with the unique ID you copied from the step above):
-
-```
-$ docker attach [CONTAINER_ID]
-```
-
-For instance, with the processes listed in the example above, we'd type, `$ docker attach ed9caa7f61ab`.
+Copyright (c) _2021_ _Matt C._

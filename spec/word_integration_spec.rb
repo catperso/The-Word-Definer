@@ -3,11 +3,6 @@ require('./app')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-before(:each) do
-  Word.clear
-  Definition.clear
-end
-
 describe('create a word path', {:type => :feature}) do
   it('creates a word and enters the words page') do
     visit('/words')

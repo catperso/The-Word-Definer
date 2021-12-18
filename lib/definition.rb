@@ -57,5 +57,4 @@ class Definition
   def word
     Word.find(self.word_id)
   end
-
 end
