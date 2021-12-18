@@ -65,3 +65,15 @@ describe('clear the pseudo databases', {:type => :feature}) do
     expect(page).to have_content("No words have been added!")
   end
 end
+
+describe('delete a single word', {:type => :feature}) do
+  it("goes to a word's page and deletes the word") do
+    word = Word.new(word: "Banana")
+    word.save
+    definition = Definition.new({definition: "A freudian fruit", word_id: word.id})
+    definition.save
+    visit("/word/#{word.id}")
+    click_on('Remove Banana!')
+    expect(page).to have_content("No words have been added!")
+  end
+end
