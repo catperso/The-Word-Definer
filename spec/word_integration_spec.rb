@@ -36,3 +36,15 @@ describe('change a definition', {:type => :feature}) do
     expect(page).to have_content("A monkey's favourite snack")
   end
 end
+
+describe('delete a definition', {:type => :feature}) do
+  it("goes to a definition's page and deletes it") do
+    word = Word.new(word: "Banana")
+    word.save
+    definition = Definition.new({definition: "A freudian fruit", word_id: word.id})
+    definition.save
+    visit("/word/#{word.id}/definition/#{definition.id}")
+    click_on('Remove definition!')
+    expect(page).to have_content("This word is undefined!")
+  end
+end
